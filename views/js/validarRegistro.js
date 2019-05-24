@@ -39,5 +39,14 @@ function validarRegistro(){
             return false;
         }
     }
+    /*VALIDAR EMAIL*/
+    if(email != ""){
+        var expresion= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        if (!expresion.test(email)){
+            document.querySelector("label[for'emailRegistro']").innerHTML+=" <br> Escriba correctamente el email."
+            return false;
+        }
+    }
+
     return true;
 }
