@@ -2,13 +2,11 @@
  VALIDAR REGISTRO
 =============*/
 function validarRegistro(){
-    console.log("Si funciona");
+    
     var usuario = document.querySelector('#usuarioRegistro').value;
-    console.log("usuario ", usuario);
     var password = document.querySelector('#passwordRegistro').value;
-    console.log("password" , password);
     var email = document.querySelector('#emailRegistro').value;
-    console.log("email " , email);
+    var email = document.querySelector('#terminos').checked;
     /*VALIDAR USUARIO*/
     if (usuario != ""){
         /* Validar espacios*/
@@ -47,6 +45,13 @@ function validarRegistro(){
             return false;
         }
     }
-
+    /*VALIDAR TERMINOS*/
+    if(!terminos){
+        document.querySelector("form"). innerHTML += "<br> Acepte terminos y condiciones";
+         usuario = document.querySelector('#usuarioRegistro').value=usuario;
+         password = document.querySelector('#passwordRegistro').value= password;
+         email = document.querySelector('#emailRegistro').value=email;
+        return false;
+    }
     return true;
 }
