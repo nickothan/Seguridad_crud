@@ -8,7 +8,7 @@ tanto en el lado del cliente como en el lado del servidor, y crear una lista bla
  - Ataques XSS (Cross site Scripting)- GET | POST
  
      Requisitos:
-      - php7 en adelante.
+      - php5.6 en adelante.
       - Apache 2.1 en adelante.
       - PhpMyAdmin.
     versión:

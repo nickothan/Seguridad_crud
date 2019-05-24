@@ -1,18 +1,17 @@
 <h1>REGISTRO DE USUARIO</h1>
 
-<form method="post">
-	<input type="text" placeholder="Usuario" name="usuarioRegistro" required>
-	<input type="password" placeholder="Contraseña" name="passwordRegistro" required>
-	<input type="email" placeholder="Email" name="emailRegistro" required>
+<form method="post" onsubmit="return validarRegistro()">
+	<label for="usuarioRegistro">Nombre de usuario:</label>
+	<input type="text" placeholder="Maximo 6 caracteres" maxlength="6" name="usuarioRegistro" id="usuarioRegistro" required>
+	<label for="passwordRegistro"></label>
+	<input type="password" placeholder="Minimo 6 caracteres, incluir núeros(s) y una mayúscula" minlength="6"name="passwordRegistro" id="passwordRegistro" required>
+	<label for="emailRegistro"></label>
+	<input type="email" placeholder="Escriba correctamente su email" name="emailRegistro" id="emailRegistro" required>
 	<input type="submit" value="Enviar">
 </form>
 <?php
  $registro = new MvcController();
  $registro -> registroUsuarioController();
-
- if(isset($_GET["action"])){
-	if($_GET["action"]=="ok"){
-		echo "Registro Exitoso";
-	}
+ if(isset($_GET["action"])){	if($_GET["action"]=="ok"){		echo "Registro Exitoso";	}
  }
 ?>

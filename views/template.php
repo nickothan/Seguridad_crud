@@ -49,6 +49,9 @@
 			width:95%;
 			margin:5px;
 		}
+		section form input#usuarioRegistro{
+			text-transform: lowercase;
+		}
 		section form input[type="submit"]{
 			position:relative;
 			margin:20px auto;
@@ -78,6 +81,7 @@
 		$mvc -> enlacesPaginasController();
 		?>
 	</section>
+	<script src="views/js/validarRegistro.js"></script>
 </body>
 
 </html>
