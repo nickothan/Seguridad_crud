@@ -69,10 +69,13 @@ class MvcController{
 	public function editarUsuarioController(){
 		$datosController = $_GET["id"];
 		$respuesta = Datos:: editarUsuariosModel($datosController, "usuario");
-		echo '<input type="hidden" value="'.$respuesta["id"].'" name="idEditar">
-				<input type="text" value="'.$respuesta["usuario"].'" name="usuarioEditar" required>
-				<input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
-				<input type="email" value="'.$respuesta["email"].'"" name="emailEditar" required>
+		echo '<input type="hidden" value="'.$respuesta["id"].'" name="idEditar" >
+				<label form="usuarioEditar">Usuario:</label>
+				<input type="text" value="'.$respuesta["usuario"].'" placeholder="Maximo 6 caracteres" name="usuarioEditar" id="usuarioEditar" maxlength="6" required>
+				<label form="passwordEditar">Contraseña:</label>
+				<input type="text" value="'.$respuesta["password"].'" placeholder="Minimo 8 caracteres, incluir núero(s) y una mayúscula" title="La contraseña debe tener minimo 8 caracteres entre minusculas, MAYUSCULAS y numeros." name="passwordEditar" id="passwordEditar" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+				<label form="emailEditar">Email:</label>
+				<input type="email" value="'.$respuesta["email"].'"" name="emailEditar" id="emailEditar" required>
 				<input type="submit" value="Actualizar">';
 	}
 	#ACTUALIZAR USUARIO

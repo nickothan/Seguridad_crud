@@ -40,7 +40,6 @@ function validarRegistro(){
     /*VALIDAR EMAIL*/
     if(email != ""){
         var expresion = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        console.log(expresion.test(email));
         if (!expresion.test(email)){
             document.querySelector("label[for='emailRegistro']").innerHTML+=" <br> Escriba correctamente el email."
             return false;

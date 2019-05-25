@@ -2,8 +2,8 @@
 VALIDACION DE INICIO
 =========================*/
 function validarIngreso(){
-    var usuario = document.querySelector('#usuarioIngreso');
-    var password = document.querySelector('#passwordIngreso');
+    var usuario = document.querySelector('#usuarioIngreso').value;
+    var password = document.querySelector('#passwordIngreso').value;
     /* VALIDACION DE USUARIO*/
     if(usuario != ""){
         var caracteres= usuario.length;
@@ -20,7 +20,7 @@ function validarIngreso(){
     /* VALIDACION PASSWORD */
     if(password != ""){
         var caracteres= password.length;
-        if(caracteres >6){
+        if(caracteres <8){
             document.querySelector("label[for='passwordIngreso']").innerHTML+= "<br> usuario o contraseña no encontrados"
             return false;
         }

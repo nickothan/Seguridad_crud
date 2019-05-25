@@ -86,6 +86,7 @@
 	</section>
 	<script src="views/js/validarRegistro.js"></script>
 	<script src="views/js/validarInicio.js"></script>
+	<script src="views/js/validarEditar.js"></script>
 </body>
 
 </html>
