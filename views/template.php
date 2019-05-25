@@ -52,6 +52,9 @@
 		section form input#usuarioRegistro{
 			text-transform: lowercase;
 		}
+		section form input#usuarioIngreso{
+			text-transform: lowercase;
+		}
 		section form input[type="submit"]{
 			position:relative;
 			margin:20px auto;
@@ -82,6 +85,7 @@
 		?>
 	</section>
 	<script src="views/js/validarRegistro.js"></script>
+	<script src="views/js/validarInicio.js"></script>
 </body>
 
 </html>

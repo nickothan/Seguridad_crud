@@ -6,7 +6,7 @@ function validarRegistro(){
     var usuario = document.querySelector('#usuarioRegistro').value;
     var password = document.querySelector('#passwordRegistro').value;
     var email = document.querySelector('#emailRegistro').value;
-    var email = document.querySelector('#terminos').checked;
+    var terminos = document.querySelector('#terminos').checked;
     /*VALIDAR USUARIO*/
     if (usuario != ""){
         /* Validar espacios*/
@@ -16,7 +16,7 @@ function validarRegistro(){
             return false;
         }
         /*VALIDAR CARACTERES ESPECIALES*/
-        var expresion = /  ^[a-zA-Z0-9]*$ /;
+        var expresion = /^[a-zA-Z0-9]*$/;
         if (!expresion.test(usuario)){
             document.querySelector("label[for='usuarioRegistro']").innerHTML +=" <br> por favor no escriba caracteres especiales";
             return false;
@@ -31,7 +31,7 @@ function validarRegistro(){
             return false;
         }
         /*VALIDAR CARACTERES ESPECIALES */
-        var expresion = /  ^[a-zA-Z0-9]*$ /;
+        var expresion = /^[a-zA-Z0-9]*$/;
         if (!expresion.test(password)){
             document.querySelector("label[for='passwordRegistro']").innerHTML +=" <br> La contraseña solo puede tener combinacion entre [a-z][A_Z][0-9]";
             return false;
@@ -39,9 +39,10 @@ function validarRegistro(){
     }
     /*VALIDAR EMAIL*/
     if(email != ""){
-        var expresion= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        var expresion = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        console.log(expresion.test(email));
         if (!expresion.test(email)){
-            document.querySelector("label[for'emailRegistro']").innerHTML+=" <br> Escriba correctamente el email."
+            document.querySelector("label[for='emailRegistro']").innerHTML+=" <br> Escriba correctamente el email."
             return false;
         }
     }
