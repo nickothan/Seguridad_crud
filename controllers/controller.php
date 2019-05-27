@@ -22,14 +22,14 @@ class MvcController{
 	#------------------------------------------------------
 	public function registroUsuarioController(){
 		if(isset($_POST["usuarioRegistro"])){
-			$datosController= array("usuario"=>$_POST["usuarioRegistro"], 
-														"password"=>$_POST["passwordRegistro"], 
-														"email" =>$_POST["emailRegistro"]);
-			$respuesta =Datos :: registroUsuarioModel($datosController, "usuario");
-			if ($respuesta== "succes"){
-				header("location:index.php?action=ok");
-			}else{
-				header("location:index.php");
+			if(       preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
+				&& preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])
+				&& preg_match( '/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailRegistro"])){
+				$datosController= array("usuario"=>$_POST["usuarioRegistro"], 
+															"password"=>$_POST["passwordRegistro"], 
+															"email" =>$_POST["emailRegistro"]);
+				$respuesta =Datos :: registroUsuarioModel($datosController, "usuario");
+				if ($respuesta== "succes"){				header("location:index.php?action=ok");			}else{				header("location:index.php");			}
 			}
 		}
 	}
@@ -37,17 +37,17 @@ class MvcController{
 	#-----------------------
 	public function ingresoUsuarioController(){
 		if(isset($_POST["usuarioIngreso"])){
-			$datosController= array("usuario"=>$_POST["usuarioIngreso"], 
-														"password"=>$_POST["passwordIngreso"] );
-			$respuesta= Datos::ingresoUsuarioModel($datosController, "usuario");
-			if($respuesta["usuario"]== $_POST["usuarioIngreso"] && $respuesta["password"]== $_POST["passwordIngreso"]){
-				session_start();
-				$_SESSION["validar"]= true;
-
-				header("location:index.php?action=usuarios");
-			}else{
-				header("location:index.php?action=fallo");
-			}
+			if( preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
+			    && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])){
+				$datosController= array("usuario"=>$_POST["usuarioIngreso"], 
+															"password"=>$_POST["passwordIngreso"] );
+				$respuesta= Datos::ingresoUsuarioModel($datosController, "usuario");
+				if($respuesta["usuario"]== $_POST["usuarioIngreso"] && $respuesta["password"]== $_POST["passwordIngreso"]){
+					session_start();
+					$_SESSION["validar"]= true;
+					header("location:index.php?action=usuarios");
+				}else{				header("location:index.php?action=fallo");			}
+			}	
 		}
 	}
 	#VISTA DE USUARIOS
@@ -82,17 +82,16 @@ class MvcController{
 	#--------------------------------------------------------------	
 	public function actualizarUsuarioController(){
 		if(isset($_POST["usuarioEditar"])){
-			var_dump($_POST["idEditar"]);
-			$datosController = array( "id"=> $_POST["idEditar"],
-							          "usuario"=>$_POST["usuarioEditar"],
-				                      "password"=>$_POST["passwordEditar"],
-				                      "email"=>$_POST["emailEditar"]);
-			$respuesta = Datos::actualizarUsuarioModel($datosController, "usuario");
-			if($respuesta== "success"){
-				header("location:index.php?action=cambio");
-			}else{
-				echo "Error";
-			}
+			if(    preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
+			 && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])
+			 && preg_match( '/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailRegistro"])){
+				$datosController = array( "id"=> $_POST["idEditar"],
+										"usuario"=>$_POST["usuarioEditar"],
+										"password"=>$_POST["passwordEditar"],
+										"email"=>$_POST["emailEditar"]);
+				$respuesta = Datos::actualizarUsuarioModel($datosController, "usuario");
+				if($respuesta== "success"){				header("location:index.php?action=cambio");			}else{				echo "Error";			}
+			 }
 		}
 	}
 	#BORRAR USUARIOS

@@ -5,7 +5,7 @@ function validarEditar(){
     var usuario = document.querySelector('#usuarioEditar').value;
     var password = document.querySelector('#passwordEditar').value;
     var email = document.querySelector('#emailEditar').value;
-
+      /* VALIDACION DE USUARIO*/
     if(usuario != ""){
         var contador = usuario.length;
         if(contador>6){
@@ -18,6 +18,7 @@ function validarEditar(){
             return false;
         }
     }
+      /* VALIDACION DE PASSWORD*/
     if(password != ""){
         var contador= password.length;
         if(contador<8){
@@ -30,6 +31,7 @@ function validarEditar(){
             return false;
         }
     }
+      /* VALIDACION DE EMAIL*/
     if(email!=""){
         var expresion = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(!expresion.test(email)){
