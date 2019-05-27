@@ -25,8 +25,9 @@ class MvcController{
 			if(       preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
 				&& preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])
 				&& preg_match( '/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailRegistro"])){
+				$encriptar = crypt( $_POST["passwordRegistro"], '23$wertwer2347$dghghrtyt56fjyASDFXB4e43sstSHS$' );
 				$datosController= array("usuario"=>$_POST["usuarioRegistro"], 
-															"password"=>$_POST["passwordRegistro"], 
+															"password"=>$encriptar, 
 															"email" =>$_POST["emailRegistro"]);
 				$respuesta =Datos :: registroUsuarioModel($datosController, "usuario");
 				if ($respuesta== "succes"){				header("location:index.php?action=ok");			}else{				header("location:index.php");			}
@@ -37,10 +38,11 @@ class MvcController{
 	#-----------------------
 	public function ingresoUsuarioController(){
 		if(isset($_POST["usuarioIngreso"])){
-			if( preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
-			    && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])){
+			if( preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioIngreso"])
+			    && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordIngreso"])){
+					$encriptar = crypt( $_POST["passwordIngreso"], '23$wertwer2347$dghghrtyt56fjyASDFXB4e43sstSHS$' );
 				$datosController= array("usuario"=>$_POST["usuarioIngreso"], 
-															"password"=>$_POST["passwordIngreso"] );
+															"password"=>$encriptar);
 				$respuesta= Datos::ingresoUsuarioModel($datosController, "usuario");
 				if($respuesta["usuario"]== $_POST["usuarioIngreso"] && $respuesta["password"]== $_POST["passwordIngreso"]){
 					session_start();
@@ -82,12 +84,13 @@ class MvcController{
 	#--------------------------------------------------------------	
 	public function actualizarUsuarioController(){
 		if(isset($_POST["usuarioEditar"])){
-			if(    preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioRegistro"])
-			 && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordRegistro"])
-			 && preg_match( '/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailRegistro"])){
+			if(    preg_match( '/^[a-zA-Z0-9]+$/', $_POST["usuarioEditar"])
+			 && preg_match( '/^[a-zA-Z0-9]+$/', $_POST["passwordEditar"])
+			 && preg_match( '/^[^0-9][a-zA-Z0-9]+([.][a-zA-Z0-9]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9]+)*[.][a-zA-Z]{2,4}$/', $_POST["emailEditar"])){
+				$encriptar = crypt( $_POST["passwordEditar"], '23$wertwer2347$dghghrtyt56fjyASDFXB4e43sstSHS$' );
 				$datosController = array( "id"=> $_POST["idEditar"],
 										"usuario"=>$_POST["usuarioEditar"],
-										"password"=>$_POST["passwordEditar"],
+										"password"=>$encriptar,
 										"email"=>$_POST["emailEditar"]);
 				$respuesta = Datos::actualizarUsuarioModel($datosController, "usuario");
 				if($respuesta== "success"){				header("location:index.php?action=cambio");			}else{				echo "Error";			}
