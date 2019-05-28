@@ -12,5 +12,6 @@
 	 $ingreso = new MvcController();
 	 $ingreso-> ingresoUsuarioController();
 
-	 if(isset($_GET["action"])){		 if($_GET["action"]=="fallo"){			 echo "Usuario o contraseña invalido.";		 }	 }
+	 if(isset($_GET["action"])){		 if($_GET["action"]=="fallo"){			echo "Usuario o contraseña invalido.";		 }	 }
+	 if(isset($_GET["action"])){		 if($_GET["action"]=="fallo3intentos"){			echo "Favor llenar el captcha";		 }	 }
 	?>
