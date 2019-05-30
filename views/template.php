@@ -77,7 +77,17 @@
 </head>
 
 <body>
-	<?php include "modules/navegacion.php"; ?>
+	
+	<?php  
+	include "modules/navegacion.php";
+//		if(isset($_GET["pagina"])){
+//			if($_GET["pagina"] == editar){
+
+//			}
+//		}else{
+//			
+//		}
+// ?>
 	<section>
 		<?php 
 		$mvc = new MvcController();

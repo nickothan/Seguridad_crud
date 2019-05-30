@@ -26,5 +26,3 @@ class Paginas{
 		return $module;
 	}
 }
-
-?>

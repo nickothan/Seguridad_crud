@@ -30,7 +30,7 @@ class MvcController{
 															"password"=>$encriptar, 
 															"email" =>$_POST["emailRegistro"]);
 				$respuesta =Datos :: registroUsuarioModel($datosController, "usuario");
-				if ($respuesta== "succes"){				header("location:index.php?action=ok");			}else{				header("location:index.php");			}
+				if ($respuesta== "succes"){				header("location:ok");			}else{				header("location:index.php");			}
 			}
 		}
 	}
@@ -53,18 +53,18 @@ class MvcController{
 						$intentos =0;
 						$datosController= array("usuarioActual"=> $usuario, "actualizarintentos"=>$intentos);
 						$respuestaActualizarIntentos = Datos ::intentosUsuarioModel($datosController, "usuario");
-						header("location:index.php?action=usuarios");
+						header("location:usuarios");
 					}else{				
 						++$intentos;
 						$datosController= array("usuarioActual"=> $usuario, "actualizarintentos"=>$intentos);
 						$respuestaActualizarIntentos = Datos ::intentosUsuarioModel($datosController, "usuario");
-						header("location:index.php?action=fallo");	
+						header("location:fallo");	
 					}
 				}else{
 					$intentos =0;
 					$datosController= array("usuarioActual"=> $usuario, "actualizarintentos"=>$intentos);
 					$respuestaActualizarIntentos = Datos ::intentosUsuarioModel($datosController, "usuario");
-					header("location:index.php?action=fallo3intentos");	
+					header("location:fallo3intentos");	
 				}
 			}
 		}
@@ -110,7 +110,7 @@ class MvcController{
 										"password"=>$encriptar,
 										"email"=>$_POST["emailEditar"]);
 				$respuesta = Datos::actualizarUsuarioModel($datosController, "usuario");
-				if($respuesta== "success"){				header("location:index.php?action=cambio");			}else{				echo "Error";			}
+				if($respuesta== "success"){				header("location:cambio");			}else{				echo "Error";			}
 			 }
 		}
 	}
@@ -121,10 +121,9 @@ class MvcController{
 			$datosController = $_GET["idBorrar"];
 			$respuesta= Datos::borrarUsuarioModel($datosController, "usuario");
 			if($respuesta=="Success"){
-				header("location:index.php?action=usuarios");
+				header("location:usuarios");
 			}
 		}
 	}
 }
 
-?>
